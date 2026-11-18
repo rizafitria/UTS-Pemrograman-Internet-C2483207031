@@ -1,0 +1,7 @@
+@extends('layouts.app')
+@section('title','Daftar Jadwal')
+@section('content')
+<div class="page-head"><p class="eyebrow">DATA AKADEMIK</p><h1>Daftar Jadwal Perkuliahan</h1><p>Seluruh jadwal yang digunakan dalam simulasi pemeriksaan konflik.</p></div>
+<form class="filter" method="GET" action="{{ route('jadwal.index') }}"><label>Hari<select name="hari"><option value="">Semua hari</option>@foreach(['Senin','Selasa','Rabu','Kamis','Jumat'] as $h)<option value="{{ $h }}" @selected($hari===$h)>{{ $h }}</option>@endforeach</select></label><label>Kelas<select name="kelas"><option value="">Semua kelas</option>@foreach(['PTI 5A','PTI 5B'] as $k)<option value="{{ $k }}" @selected($kelas===$k)>{{ $k }}</option>@endforeach</select></label><button class="btn" type="submit">Terapkan filter</button><a class="btn light" href="{{ route('jadwal.index') }}">Reset</a></form>
+<div class="table-wrap"><table><thead><tr><th>Kode / Mata kuliah</th><th>Dosen</th><th>Kelas</th><th>Hari</th><th>Waktu</th><th>Ruangan</th><th></th></tr></thead><tbody>@forelse($jadwals as $j)<tr><td><b>{{ $j['kode'] }}</b><small>{{ $j['matkul'] }}</small></td><td>{{ $j['dosen'] }}</td><td>{{ $j['kelas'] }}</td><td>{{ $j['hari'] }}</td><td>{{ $j['mulai'] }}–{{ $j['selesai'] }}</td><td>{{ $j['ruangan'] }}</td><td><a href="{{ route('jadwal.show',$j['id']) }}">Detail</a></td></tr>@empty<tr><td colspan="7" class="empty">Data tidak ditemukan.</td></tr>@endforelse</tbody></table></div>
+@endsection

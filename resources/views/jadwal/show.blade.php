@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('title','Detail Jadwal')
+@section('content')<div class="page-head"><p class="eyebrow">INFORMASI PERKULIAHAN</p><h1>Detail Jadwal</h1><p>Informasi lengkap satu kegiatan perkuliahan.</p></div><section class="detail-card"><span class="pill">{{ $jadwal['kode'] }}</span><h2>{{ $jadwal['matkul'] }}</h2><div class="detail-grid"><div><small>Dosen pengampu</small><b>{{ $jadwal['dosen'] }}</b></div><div><small>Kelas</small><b>{{ $jadwal['kelas'] }}</b></div><div><small>Hari</small><b>{{ $jadwal['hari'] }}</b></div><div><small>Waktu</small><b>{{ $jadwal['mulai'] }} – {{ $jadwal['selesai'] }}</b></div><div><small>Ruangan</small><b>{{ $jadwal['ruangan'] }}</b></div></div><a class="btn light" href="{{ route('jadwal.index') }}">← Kembali ke daftar</a></section>
+@endsection

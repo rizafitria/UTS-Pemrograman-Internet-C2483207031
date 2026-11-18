@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Tentang Aplikasi')
+@section('content')<div class="page-head"><p class="eyebrow">TENTANG PROYEK</p><h1>Sistem Deteksi Bentrok Jadwal Perkuliahan</h1><p>Aplikasi simulasi untuk membantu program studi menemukan konflik jadwal secara cepat.</p></div><section class="detail-card"><h2>Tujuan aplikasi</h2><p>Membantu pengelola program studi memeriksa apakah dua perkuliahan dijadwalkan pada waktu yang bertumpang tindih dengan penggunaan ruangan, dosen, atau kelas yang sama.</p><h2>Teknologi</h2><p>Laravel, PHP, Routing, Controller, Blade Template, HTML, dan CSS. Data disimpan dalam array PHP tanpa database.</p><h2>Identitas mahasiswa</h2><p>Nama: [Isi nama lengkap]<br>NIM: [Isi NIM]<br>Kelas: PTI 5</p></section>@endsection

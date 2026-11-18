@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Jadwal Aman')
+@section('content')<div class="page-head"><p class="eyebrow">HASIL PEMERIKSAAN</p><h1>Jadwal Tanpa Konflik</h1><p>Jadwal berikut tidak terlibat dalam pasangan konflik yang ditemukan.</p></div><div class="table-wrap"><table><thead><tr><th>Mata kuliah</th><th>Dosen</th><th>Kelas</th><th>Hari</th><th>Waktu</th><th>Ruangan</th></tr></thead><tbody>@forelse($jadwals as $j)<tr><td><b>{{ $j['matkul'] }}</b><small>{{ $j['kode'] }}</small></td><td>{{ $j['dosen'] }}</td><td>{{ $j['kelas'] }}</td><td>{{ $j['hari'] }}</td><td>{{ $j['mulai'] }}–{{ $j['selesai'] }}</td><td>{{ $j['ruangan'] }}</td></tr>@empty<tr><td colspan="6" class="empty">Tidak ada jadwal aman.</td></tr>@endforelse</tbody></table></div>@endsection

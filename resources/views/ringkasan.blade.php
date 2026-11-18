@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Ringkasan')
+@section('content')<div class="page-head"><p class="eyebrow">RINGKASAN SISTEM</p><h1>Ringkasan Jadwal</h1><p>Rekap hasil pemeriksaan seluruh data perkuliahan.</p></div><div class="stats"><div class="stat"><small>Total data jadwal</small><strong>{{ $total }}</strong></div><div class="stat danger"><small>Pasangan konflik</small><strong>{{ count($analisis['bentrok']) }}</strong></div><div class="stat success"><small>Jadwal tidak konflik</small><strong>{{ count($analisis['aman']) }}</strong></div></div><div class="note">Catatan: satu jadwal dapat muncul dalam lebih dari satu pasangan konflik. Karena itu, jumlah pasangan konflik berbeda dengan jumlah jadwal yang terlibat konflik.</div>@endsection
