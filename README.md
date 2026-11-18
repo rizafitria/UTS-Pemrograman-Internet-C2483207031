@@ -71,12 +71,17 @@ Simpan minimal tiga screenshot hasil aplikasi ke folder `screenshots/`, misalnya
 
 Setelah screenshot dibuat, tampilkan di bagian ini agar terlihat langsung di GitHub:
 
-```markdown
+## Beranda
 ![beranda](screenshots/beranda.png)
+
+## Daftar Jadwal
 ![Daftar Jadwal](screenshots/daftarjadwal.png)
+
+## Hasil Deteksi Bentrok
 ![Hasil Deteksi Bentrok](screenshots/analisis.png)
+
+## Tentang Aplikasi
 ![Tentang Aplikasi](screenshots/tentang.png)
-```
 
 ## 7. Pengumpulan GitHub
 1. Isi nama dan NIM pada README serta halaman Tentang.
