@@ -1,75 +1,109 @@
-# Sistem Deteksi Bentrok Jadwal Perkuliahan
+# APLIKASI JADWAL BENTROK
 
-**Proyek UTS Pemrograman Internet – Laravel**  
-Nama: Riza Fitria
-NIM: C2483207031
-Kelas: PTI 5  
-Tema: Sistem Deteksi Bentrok Jadwal Perkuliahan
+## 1. Identitas Mahasiswa
 
-## 1. Deskripsi masalah
-Program studi dapat mengalami bentrok ketika dua mata kuliah dijadwalkan pada waktu yang sama. Konflik dapat terjadi karena ruangan dipakai bersamaan, dosen mengajar dua kelas sekaligus, atau satu kelas memiliki dua mata kuliah pada waktu yang bertumpang tindih.
-
-Aplikasi ini menampilkan data jadwal, detail jadwal, penyaringan berdasarkan hari/kelas, serta hasil deteksi konflik secara otomatis.
-
-## 2. Teknologi dan struktur MVC
-- **Model/data:** `app/Data/JadwalData.php` menyediakan 18 data jadwal dalam array PHP. Tidak menggunakan database.
-- **Routing:** `routes/web.php` menghubungkan URL dengan method Controller. Terdapat 9 route.
-- **Controller:** `DashboardController`, `JadwalController`, dan `AnalisisController` menangani tampilan, filter, detail, dan perhitungan konflik.
-- **View:** Blade di `resources/views` menampilkan halaman beranda, daftar, detail, jadwal per hari, analisis, jadwal bentrok, jadwal aman, ringkasan, dan tentang.
-- **Layout Blade:** halaman menggunakan `@extends`, `@section`, `@yield`, `@foreach`, `@forelse`, `@if`/percabangan terkait tampilan.
-
-## 3. Logika deteksi bentrok
-Jam dikonversi menjadi menit: `jam * 60 + menit`. Dua jadwal hanya dibandingkan jika hari keduanya sama. Rentang waktu bertumpang tindih jika:
-
-```php
-$mulaiA < $selesaiB && $mulaiB < $selesaiA
-```
-
-Jika waktu bertumpang tindih, sistem memeriksa tiga kondisi:
-1. Nama ruangan sama → konflik ruangan.
-2. Nama dosen sama → konflik dosen.
-3. Nama kelas sama → konflik kelas.
-
-Jika satu atau lebih kondisi terpenuhi, pasangan jadwal ditampilkan bersama alasan konflik. Jadwal yang tidak masuk ke pasangan konflik dimasukkan ke daftar jadwal aman.
-
-## 4. Daftar route
-| URL | Fungsi |
+| Keterangan | Data |
 |---|---|
-| `/` | Dashboard |
-| `/jadwal` | Daftar dan filter jadwal |
-| `/jadwal/hari/{hari}` | Jadwal berdasarkan hari |
-| `/jadwal/{id}` | Detail jadwal berdasarkan ID |
-| `/analisis` | Ringkasan analisis |
-| `/analisis/bentrok` | Daftar pasangan konflik |
-| `/analisis/aman` | Daftar jadwal aman |
-| `/ringkasan` | Ringkasan jumlah jadwal dan konflik |
-| `/tentang` | Informasi aplikasi |
+| Nama Lengkap | Riza Fitria |
+| NIM | C2483207031 |
+| Kelas | PTI5 |
+| Mata Kuliah | Pemrograman Internet |
+| Jenis Tugas | Ujian Tengah Semester (UTS) |
 
-## 5. Cara memasang pada Laravel
-Pastikan PHP, Composer, dan Laravel sudah terpasang. Buat proyek Laravel baru:
+## 2. Judul Proyek
 
-```bash
-composer create-project laravel/laravel deteksi-jadwal
-cd deteksi-jadwal
-```
+**Aplikasi Pendeteksi Jadwal Bentrok Berbasis Web Menggunakan Framework Laravel**
 
-Salin folder dan file dari paket proyek ini ke folder proyek Laravel dengan mempertahankan strukturnya (`app`, `routes`, `resources`, dan `public`). Jika diminta, izinkan file yang sama untuk diganti, khususnya `routes/web.php`.
+## 3. Deskripsi Permasalahan dan Solusi
 
-Jalankan aplikasi:
+### Permasalahan
 
-```bash
-php artisan serve
-```
+Penyusunan jadwal sering mengalami kendala, salah satunya adalah terjadinya jadwal yang bertabrakan. Contohnya, dua kegiatan atau mata kuliah memiliki waktu pelaksanaan yang sama sehingga dapat menyebabkan kesulitan dalam mengatur kegiatan.
 
-Buka `http://127.0.0.1:8000` pada browser. Tidak perlu membuat database atau menjalankan migration karena data menggunakan array PHP.
+Pengecekan jadwal secara manual juga membutuhkan waktu dan berisiko menimbulkan kesalahan.
 
-## 6. Screenshot aplikasi
-Simpan minimal tiga screenshot hasil aplikasi ke folder `screenshots/`, misalnya:
-- `01-dashboard.png` – halaman utama.
-- `02-daftar-jadwal.png` – daftar jadwal perkuliahan.
-- `03-hasil-bentrok.png` – hasil deteksi bentrok.
+### Solusi
 
-Setelah screenshot dibuat, tampilkan di bagian ini agar terlihat langsung di GitHub:
+Untuk mengatasi permasalahan tersebut, dikembangkan aplikasi Jadwal Bentrok berbasis web menggunakan framework Laravel.
+
+Aplikasi ini bertujuan membantu pengguna dalam mengelola jadwal dan mengetahui apakah terdapat waktu pelaksanaan yang saling bertabrakan.
+
+Dengan adanya aplikasi ini, proses pengecekan jadwal diharapkan menjadi lebih mudah, cepat, dan terstruktur.
+
+## 4. Implementasi Routing, Controller, dan Blade View
+
+Aplikasi ini menggunakan konsep arsitektur Laravel yang memisahkan pengaturan alamat halaman, proses pengolahan data, dan tampilan aplikasi.
+
+### A. Routing
+
+Routing digunakan untuk mengatur alamat atau URL yang dapat diakses oleh pengguna.
+
+Konfigurasi routing pada Laravel terdapat dalam file:
+
+`routes/web.php`
+
+Routing berfungsi menghubungkan permintaan pengguna dengan fungsi yang terdapat pada Controller.
+
+### B. Controller
+
+Controller berfungsi sebagai penghubung antara Routing, Model, dan View.
+
+Controller bertugas:
+- Menerima permintaan dari pengguna.
+- Memproses data jadwal.
+- Melakukan pengecekan kemungkinan bentrok.
+- Mengirimkan hasil pengolahan data ke halaman tampilan.
+
+Controller disimpan pada folder:
+
+`app/Http/Controllers/`
+
+### C. Blade View
+
+Blade View digunakan untuk menampilkan halaman antarmuka aplikasi kepada pengguna.
+
+Blade merupakan template engine bawaan Laravel yang memungkinkan penggunaan HTML dan sintaks khusus Laravel.
+
+File tampilan disimpan pada folder:
+
+`resources/views/`
+
+Blade View digunakan untuk menampilkan informasi jadwal, formulir pengisian, dan hasil pengecekan jadwal.
+
+## 5. Logika Perhitungan dan Analisis
+
+Logika utama aplikasi adalah melakukan pengecekan terhadap waktu mulai dan waktu selesai dari setiap jadwal.
+
+Pengecekan dilakukan dengan membandingkan dua rentang waktu.
+
+Misalnya:
+
+- Jadwal A: 08.00–10.00
+- Jadwal B: 09.00–11.00
+
+Kedua jadwal tersebut mengalami bentrok karena memiliki waktu pelaksanaan yang bersamaan.
+
+Secara logika, kondisi bentrok dapat diperiksa menggunakan rumus:
+
+`waktu_mulai_A < waktu_selesai_B && waktu_mulai_B < waktu_selesai_A`
+
+Apabila kondisi tersebut bernilai benar, berarti kedua jadwal mengalami bentrok.
+
+Sebaliknya, apabila kondisi tersebut bernilai salah, berarti kedua jadwal tidak mengalami bentrok.
+
+**Contoh analisis:**
+
+| Jadwal | Mulai | Selesai | Keterangan |
+|---|---|---|---|
+| A | 08.00 | 10.00 | - |
+| B | 09.00 | 11.00 | Bentrok |
+| C | 10.00 | 12.00 | Tidak bentrok dengan A |
+
+Logika ini digunakan untuk membantu mengurangi kesalahan dalam penyusunan jadwal.
+
+## 6. Screenshot Hasil Aplikasi
+
+Berikut merupakan dokumentasi tampilan aplikasi Jadwal Bentrok.
 
 ## Beranda
 ![beranda](screenshots/beranda.png)
@@ -83,11 +117,76 @@ Setelah screenshot dibuat, tampilkan di bagian ini agar terlihat langsung di Git
 ## Tentang Aplikasi
 ![Tentang Aplikasi](screenshots/tentang.png)
 
-## 7. Pengumpulan GitHub
-1. Isi nama dan NIM pada README serta halaman Tentang.
-2. Jalankan aplikasi dan pastikan semua halaman dapat dibuka.
-3. Ambil minimal tiga screenshot dan simpan di folder `screenshots/`.
-4. Upload seluruh source code ke repository GitHub dengan status **Public**.
-5. Kirim link repository GitHub melalui Edlink.
+## 7. Petunjuk Menjalankan Aplikasi
 
-> Data jadwal di dalam proyek ini adalah data simulasi untuk demonstrasi. Sesuaikan identitas mahasiswa sebelum dikumpulkan.
+Berikut langkah-langkah untuk menjalankan aplikasi pada komputer:
+
+### Persyaratan
+
+- PHP
+- Composer
+- MySQL
+- Laravel
+- Git
+
+### Langkah Instalasi
+
+**1. Clone repository**
+
+```bash
+git clone https://github.com/rizafitria/UTS-Pemrograman-Internet-C2483207031.git
+```
+
+**2. Masuk ke folder project**
+
+```bash
+cd UTS-Pemrograman-Internet-C2483207031
+```
+
+**3. Install dependency**
+
+```bash
+composer install
+```
+
+**4. Salin file konfigurasi**
+
+```bash
+copy .env.example .env
+```
+
+**5. Generate application key**
+
+```bash
+php artisan key:generate
+```
+
+**6. Atur database**
+
+Sesuaikan konfigurasi database pada file `.env`, meliputi nama database, username, dan password.
+
+**7. Jalankan migrasi database**
+
+```bash
+php artisan migrate
+```
+
+**8. Jalankan aplikasi**
+
+```bash
+php artisan serve
+```
+
+**9. Buka aplikasi melalui browser**
+
+```text
+http://127.0.0.1:8000
+```
+
+## 8. Kesimpulan
+
+Aplikasi Jadwal Bentrok merupakan aplikasi berbasis web yang dikembangkan menggunakan framework Laravel sebagai penerapan materi Pemrograman Internet.
+
+Melalui proyek ini, mahasiswa dapat memahami penerapan Routing, Controller, Blade View, serta logika perbandingan waktu dalam pengembangan aplikasi web.
+
+Diharapkan aplikasi ini dapat membantu proses pengelolaan jadwal agar lebih efektif dan mengurangi kemungkinan terjadinya jadwal yang bertabrakan.
