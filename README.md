@@ -75,7 +75,7 @@ Setelah screenshot dibuat, tampilkan di bagian ini agar terlihat langsung di Git
 ![beranda](screenshots/beranda.png)
 
 ## Daftar Jadwal
-![Daftar Jadwal](screenshots/daftarjadwal.png)
+![Daftar Jadwal](screenshots/datajadwal.png)
 
 ## Hasil Deteksi Bentrok
 ![Hasil Deteksi Bentrok](screenshots/analisis.png)
