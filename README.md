@@ -1,8 +1,8 @@
 # Sistem Deteksi Bentrok Jadwal Perkuliahan
 
 **Proyek UTS Pemrograman Internet – Laravel**  
-Nama: [Isi nama lengkap]  
-NIM: [Isi NIM]  
+Nama: Riza Fitria
+NIM: C2483207031
 Kelas: PTI 5  
 Tema: Sistem Deteksi Bentrok Jadwal Perkuliahan
 
@@ -72,9 +72,10 @@ Simpan minimal tiga screenshot hasil aplikasi ke folder `screenshots/`, misalnya
 Setelah screenshot dibuat, tampilkan di bagian ini agar terlihat langsung di GitHub:
 
 ```markdown
-![Dashboard](screenshots/01-dashboard.png)
-![Daftar Jadwal](screenshots/02-daftar-jadwal.png)
-![Hasil Deteksi Bentrok](screenshots/03-hasil-bentrok.png)
+![beranda](screenshots/beranda.png)
+![Daftar Jadwal](screenshots/daftarjadwal.png)
+![Hasil Deteksi Bentrok](screenshots/analisis.png)
+![Tentang Aplikasi](screenshots/tentang.png)
 ```
 
 ## 7. Pengumpulan GitHub
